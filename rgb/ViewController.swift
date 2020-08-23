@@ -20,60 +20,64 @@ class ViewController: UIViewController {
     @IBOutlet weak var sliderGreen: UISlider!
     @IBOutlet weak var sliderBlue: UISlider!
     
-    @IBOutlet weak var nameRed: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleSlider()
-        nameRed.sizeToFit()
-        
+        styleSliderRed()
+        styleSliderGreen()
+        styleSliderBlue()
     }
 
-    
     @IBAction func changeRedSlider() {
         let sliderValue = CGFloat(sliderRed.value)
         valueRed.text = String(format: "%.2f", sliderRed.value)
         
-        viewColor.backgroundColor = sliderRed.minimumTrackTintColor?.withAlphaComponent(sliderValue)
+        viewColor.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: sliderValue)
     }
-    
     
     @IBAction func changeGreenSlider() {
         let sliderValue = CGFloat(sliderGreen.value)
         valueGreen.text = String(format: "%.2f", sliderGreen.value)
         
-        viewColor.backgroundColor = sliderGreen.minimumTrackTintColor?.withAlphaComponent(sliderValue)
+        viewColor.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: sliderValue)
     }
-    
     
     @IBAction func changeBlueSlider() {
         let sliderValue = CGFloat(sliderBlue.value)
         valueBlue.text = String(format: "%.2f", sliderBlue.value)
         
-        viewColor.backgroundColor = sliderBlue.minimumTrackTintColor?.withAlphaComponent(sliderValue)
+        viewColor.backgroundColor = UIColor(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: sliderValue)
     }
     
-    
+   
     //MARK: Private Methods
     
-    func styleSlider() {
+    func styleSliderRed() {
         
-        sliderRed.value = 0.5
+        sliderRed.value = 0
         sliderRed.minimumValue = 0
         sliderRed.maximumValue = 1
         sliderRed.minimumTrackTintColor = .red
         sliderRed.thumbTintColor = .blue
         
         valueRed.text = String(sliderRed.value)
+    }
         
-        sliderGreen.value = 0.5
+    func styleSliderGreen() {
+        
+        sliderGreen.value = 0
         sliderGreen.minimumValue = 0
         sliderGreen.maximumValue = 1
         sliderGreen.minimumTrackTintColor = .green
         sliderGreen.thumbTintColor = .blue
         
         valueGreen.text = String(sliderGreen.value)
+
+    }
+    
+    func styleSliderBlue() {
         
-        sliderBlue.value = 0.5
+        sliderBlue.value = 0
         sliderBlue.minimumValue = 0
         sliderBlue.maximumValue = 1
         sliderBlue.minimumTrackTintColor = .blue
